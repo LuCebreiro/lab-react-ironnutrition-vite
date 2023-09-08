@@ -1,19 +1,22 @@
-function FoodBox({ name, calories, image, servings }) {
-const totalKCAL = servings*calories
+function FoodBox(props) {
+
+    const { food, onDelete } = props
+    const totalKCAL = food.servings * food.calories
 
     return (
         <div className='FoodBox'>
-            <p>{name}</p>
-            <img src={image} alt={name} />
+            <h3>{food.name}</h3>
+            <img src={food.image} alt={food.name} width={200} />
 
-            <p>Calories: {calories}</p>
-            <p>Servings: {servings}</p>
+            <p>Calories: {food.calories}</p>
+            <p>Servings: {food.servings}</p>
 
             <p>
                 <b>Total Calories: {totalKCAL}</b> kcal
             </p>
 
-            <button>Delete</button>
+            <button onClick={onDelete}>Delete</button>
+            <hr />
         </div>
     )
 
